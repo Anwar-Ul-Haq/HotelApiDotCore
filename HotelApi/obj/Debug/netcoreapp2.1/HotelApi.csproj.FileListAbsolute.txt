@@ -1,0 +1,15 @@
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\bin\Debug\netcoreapp2.1\HotelApi.deps.json
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\bin\Debug\netcoreapp2.1\HotelApi.runtimeconfig.json
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\bin\Debug\netcoreapp2.1\HotelApi.runtimeconfig.dev.json
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\bin\Debug\netcoreapp2.1\HotelApi.dll
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\bin\Debug\netcoreapp2.1\HotelApi.pdb
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.csprojAssemblyReference.cache
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.csproj.CoreCompileInputs.cache
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.RazorAssemblyInfo.cache
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.RazorAssemblyInfo.cs
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.AssemblyInfoInputs.cache
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.AssemblyInfo.cs
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.RazorTargetAssemblyInfo.cache
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.dll
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\HotelApi.pdb
+D:\L\Building and Securing RESTful APIs in ASP.NET Core\Practice\HotelApi\HotelApi\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
