@@ -28,7 +28,12 @@ namespace HotelApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => { options.Filters.Add<JsonExceptionFilter>(); }
+            services.AddMvc(options =>
+                {
+                    options.Filters.Add<JsonExceptionFilter>();
+                    options.Filters.Add<RequireHttpsOrCloseAttribute>();
+
+                }
                 
                 ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -36,16 +41,26 @@ namespace HotelApi
 
             services.AddApiVersioning(options =>
             {
-                options.DefaultApiVersion = new ApiVersion(1,0);
+                options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ApiVersionReader = new MediaTypeApiVersionReader();
 
                 options.AssumeDefaultVersionWhenUnspecified = true;
 
                 options.ReportApiVersions = true;
                 options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
-
-
             });
+
+                services.AddCors(options =>
+                {
+                    options.AddPolicy("AllowApp",
+                    //policy=> policy.WithOrigins("https://example.com")  //create a white list for prodution environment.
+                    policy => policy.AllowAnyOrigin()); // allowing all for dev 
+                    
+
+                });
+
+
+         
 
         }
 
@@ -67,7 +82,8 @@ namespace HotelApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors("AllowMyApp");
+          
             app.UseMvc();
         }
     }
