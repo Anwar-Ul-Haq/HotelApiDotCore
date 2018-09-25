@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -31,6 +32,13 @@ namespace HotelApi
         {
 
             services.Configure<HotelInfo>(Configuration.GetSection("Info"));
+
+
+            //Use in-memory database for quick dev and testing
+            //swap with real databse for  production    
+
+
+            services.AddDbContext<HotelApiDbContext>(options => options.UseInMemoryDatabase("LocalHotel"));
 
 
             services.AddMvc(options =>
