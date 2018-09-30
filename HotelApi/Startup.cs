@@ -50,6 +50,8 @@ namespace HotelApi
                     options.Filters.Add<JsonExceptionFilter>();
                     options.Filters.Add<RequireHttpsOrCloseAttribute>();
 
+                    options.Filters.Add<LinkRewritingFilter>();
+
                 }
                 
                 ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -73,6 +75,8 @@ namespace HotelApi
                     options.AddPolicy("AllowApp",
                     //policy=> policy.WithOrigins("https://example.com")  //create a white list for prodution environment.
                     policy => policy.AllowAnyOrigin()); // allowing all for dev 
+
+
                     
 
                 });

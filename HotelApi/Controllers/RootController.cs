@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using HotelApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Operations;
 
@@ -19,16 +20,13 @@ namespace HotelApi.Controllers
         public IActionResult GetRoot()
         {
 
-            var response = new
+            var response = new RootResponse
             {
 
-                href = Url.Link(nameof(GetRoot) ,null),
-                rooms = new { href = Url.Link(nameof(RoomsController.GetRooms) , null) },
-                info = new
-                {
-                    href = Url.Link(nameof(InfoController.GetInfo), null)
-                }
-
+                Self = Link.To(nameof(GetRoot)),
+                Rooms = Link.To(nameof(RoomsController.GetRooms)),
+                Info =  Link.To(nameof(InfoController.GetInfo))
+                
             };
 
             return Ok(response);

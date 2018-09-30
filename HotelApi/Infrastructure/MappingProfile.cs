@@ -12,9 +12,10 @@ namespace HotelApi.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<RoomEntity, Room>().ForMember(dest => dest.Rate, opt => opt.MapFrom(src => src.Rate / 100.0m));
-
-            //todo  Url.Link here
+            CreateMap<RoomEntity, Room>().ForMember(dest => dest.Rate, opt => opt.MapFrom(src => src.Rate / 100.0m))
+                .ForMember(dest => dest.Self, opt => opt.MapFrom(src =>
+                    Link.To(nameof(Controllers.RoomsController.GetRoomById),
+                        new {roomid = src.Id})));
         }
     }
 }
