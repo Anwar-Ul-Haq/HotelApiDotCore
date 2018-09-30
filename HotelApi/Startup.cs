@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using HotelApi.Filters;
+using HotelApi.Infrastructure;
 using HotelApi.Models;
+using HotelApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,10 +36,11 @@ namespace HotelApi
 
             services.Configure<HotelInfo>(Configuration.GetSection("Info"));
 
+            services.AddScoped<IRoomService, DefaultRoomService>();
+
 
             //Use in-memory database for quick dev and testing
             //swap with real databse for  production    
-
 
             services.AddDbContext<HotelApiDbContext>(options => options.UseInMemoryDatabase("LocalHotel"));
 
@@ -62,6 +66,7 @@ namespace HotelApi
                 options.ReportApiVersions = true;
                 options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
             });
+            services.AddAutoMapper(options => options.AddProfile<MappingProfile>());
 
                 services.AddCors(options =>
                 {
