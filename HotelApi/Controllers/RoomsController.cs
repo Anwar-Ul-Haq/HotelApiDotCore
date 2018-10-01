@@ -23,11 +23,21 @@ namespace HotelApi.Controllers
         }
 
       
-        [HttpGet(Name = nameof(GetRooms))]
+        [HttpGet(Name = nameof(GetAllRooms))]
+        [ProducesResponseType(200)]
 
-        public IActionResult GetRooms()
+        public async Task<ActionResult<Collection<Room>>> GetAllRooms()
         {
-            throw new NotImplementedException();
+            var rooms = await _roomService.GetRoomsAsync();
+            var collection = new Collection<Room>
+            {
+
+                Self = Link.ToCollection(nameof(GetAllRooms)),
+                Value = rooms.ToArray()
+
+            };
+
+            return collection;
         }
 
         //Get rooms/{roomId}

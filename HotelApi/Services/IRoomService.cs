@@ -9,6 +9,6 @@ namespace HotelApi.Services
    public  interface IRoomService
    {
        Task<Room> GetRoomAsync(Guid Id);
-
-   }
+        Task<IEnumerable<Room>> GetRoomsAsync();
+    }
 }
