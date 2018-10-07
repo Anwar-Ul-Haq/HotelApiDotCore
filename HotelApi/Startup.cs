@@ -7,6 +7,7 @@ using HotelApi.Filters;
 using HotelApi.Infrastructure;
 using HotelApi.Models;
 using HotelApi.Services;
+using LandonApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,8 +36,13 @@ namespace HotelApi
         {
 
             services.Configure<HotelInfo>(Configuration.GetSection("Info"));
-
+            services.Configure<HotelOptions>(Configuration);
             services.AddScoped<IRoomService, DefaultRoomService>();
+            services.AddScoped<IOpeningService, DefaultOpeningService>();
+            services.AddScoped<IBookingService, DefaultBookingService>();
+            services.AddScoped<IDateLogicService, DefaultDateLogicService>();
+
+            services.Configure<PagingOptions>(Configuration.GetSection("DefaultPagingOptions"));
 
 
             //Use in-memory database for quick dev and testing
@@ -51,6 +57,7 @@ namespace HotelApi
                     options.Filters.Add<RequireHttpsOrCloseAttribute>();
 
                     options.Filters.Add<LinkRewritingFilter>();
+
 
                 }
                 
@@ -68,7 +75,20 @@ namespace HotelApi
                 options.ReportApiVersions = true;
                 options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
             });
-            services.AddAutoMapper(options => options.AddProfile<MappingProfile>());
+
+            services.AddAutoMapper(
+                options => options.AddProfile<MappingProfile>());
+
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var errorResponse = new ApiError(context.ModelState);
+                    return new BadRequestObjectResult(errorResponse);
+                };
+            });
+
 
                 services.AddCors(options =>
                 {
